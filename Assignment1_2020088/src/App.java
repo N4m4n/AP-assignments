@@ -35,17 +35,43 @@ public class App {
                 int gap = sc.nextInt();
                 System.out.println();
 
-                System.out.println("Vaccine Name: "+vacName+", No of Doses: "+noOfDoses+", Gap between doses: "+gap);
-                System.out.println();
-
                 Vaccine currVacc = new Vaccine(vacName, noOfDoses, gap);
-                Vaccine.addVac(currVacc);
+                System.out.println("Vaccine Name: "+currVacc.getName()+", No of Doses: "+currVacc.getDoses()+", Gap between doses: "+currVacc.getGap());
+                System.out.println();
+                
 
 
 
             }else if(choice == 2){
+                System.out.print("Hospital Name: ");
+                sc.nextLine();
+                String hospName = sc.nextLine();
+
+                System.out.print("Pincode: ");
+                String pin = sc.nextLine();
+
+                Hospital currHosp = new Hospital(hospName, pin);
+                System.out.println("Hospital Name: "+currHosp.getName()+", PinCode: "+currHosp.getPincode()+", Unique ID: "+currHosp.getId());
+                System.out.println();
+                
+                           
+
+
 
             }else if(choice == 3){
+                System.out.print("Citizen Name: ");
+                sc.nextLine();
+                String citName = sc.nextLine();
+                 
+                System.out.print("Age: ");
+                int age = sc.nextInt();
+                sc.nextLine();
+                System.out.print("Unique ID: ");
+                String uid = sc.nextLine();
+                Citizen currCiti = new Citizen(citName, age, uid);
+                System.out.println("Citizen Name: "+currCiti.getName()+", Age: "+currCiti.getAge()+", Unique ID "+currCiti.getId());
+                System.out.println();
+
 
             }else if(choice == 4){
 
@@ -58,6 +84,11 @@ public class App {
             }else if(choice == 8){
                 break;
             }else{
+                //TODO:remove below lines (x.y() types). Only for testing.  
+
+                Vaccine.showVacc();
+                Hospital.showHospitals();
+                Citizen.showCitizens();
                 System.out.println("Invalid input. Please try again.");
                 continue;
             }
