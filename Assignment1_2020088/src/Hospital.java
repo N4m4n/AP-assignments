@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 public class Hospital {
     //Class variables 
    private static ArrayList<Hospital> allHospitals = new ArrayList<Hospital>();
@@ -39,7 +38,7 @@ public class Hospital {
 
    public void addSlot(int noOfSlots) throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        Scanner sc = new Scanner(System.in);
+       
         for(int i = 0; i < noOfSlots; i++){
              System.out.print("Enter the day number: " );
              int day = Integer.parseInt(br.readLine());
@@ -65,7 +64,7 @@ public class Hospital {
              System.out.println("Slot added by Hospital "+this.getId()+" for Day "+day+", Available quantity: "+quantity+" of Vaccine "+toAdd.getVaccineGiven().getName());
 
         }
-     //    sc.close();
+
     
    }
 
