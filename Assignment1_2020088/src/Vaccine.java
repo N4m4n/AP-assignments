@@ -12,6 +12,16 @@ public class Vaccine {
         allVaccines.add(this);
         
     }
+
+    public static Vaccine getVaccfromName(String s){
+        for(int i = 0; i < allVaccines.size(); i++){
+            if(allVaccines.get(i).getName().equals(s)){
+                return allVaccines.get(i);
+            }
+        }
+        return null;
+    }
+
     public static void addVac(Vaccine v){
         allVaccines.add(v);
     }

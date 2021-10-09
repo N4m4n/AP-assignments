@@ -68,6 +68,18 @@ public class Hospital {
     
    }
 
+   public boolean hasReqVac(String s){
+        boolean res = false;
+        for(int i = 0; i <this.slots.size(); i++){
+           Slots tempSlot = this.slots.get(i);
+           if(tempSlot.getVaccineGiven().getName().equals(s)){
+                res = true;
+                break;
+           }
+        }
+        return res;
+   }
+
    public void updateSlot(int chosenSlot){
         Slots toUpdate = this.slots.get(chosenSlot);
         int currQuantitiy = toUpdate.getQuantity();
@@ -123,6 +135,23 @@ public class Hospital {
      return null;
    
 }
+
+  
+     public static ArrayList<Integer> getHospitalsByVaccInd(String toFind){
+          ArrayList<Integer> toReturn = new ArrayList<>();
+          
+          for(int i =0;i<allHospitals.size();i++){
+               Hospital temp = allHospitals.get(i);
+               if(temp.hasReqVac(toFind)){
+                    System.out.println(temp.getId()+" "+temp.getName());
+                    toReturn.add(i);
+               }
+          }
+
+          return toReturn;
+     }
+
+
    public static ArrayList<Integer> getHospitalsIndexInPin(String s){
      ArrayList<Integer> toRet = new ArrayList<Integer>();
      for(int i = 0; i < allHospitals.size(); i++){

@@ -189,6 +189,59 @@ public class App {
                     }
                     
                 }else if(searchOpt==2){
+                    System.out.print("Enter the vaccine: ");
+                    String toSearch = br.readLine();
+                    if(!(patient.getVaccStatus().equals("REGISTERED"))){
+                        if(!(patient.getVaccAdministered().getName().equals(toSearch))){
+                            System.out.println("This vaccine does not match your first vaccine");
+                            continue;
+                        }
+                    }
+                    Vaccine vacc = Vaccine.getVaccfromName(toSearch);
+                    if(vacc==null){
+                        System.out.println("This vaccine does not exist");
+                        continue;
+                    }
+                    
+                    ArrayList<Integer> matchingHospIndices = Hospital.getHospitalsByVaccInd(toSearch);
+                    if(matchingHospIndices.size()==0){
+                        System.out.println("No hospital with the required Vaccine");
+                        continue;
+                    }
+
+                    System.out.print("Enter Hospital ID: ");
+                    String enteredId = br.readLine();                    
+                    Hospital selectedHospital = Hospital.getHospById(enteredId);
+                    while(selectedHospital == null){
+                        System.out.print("Enter Hospital ID: ");
+                      
+                        enteredId = br.readLine();
+                        selectedHospital = Hospital.getHospById(enteredId);
+                    }
+                    int vaccDueDate = -1;
+                    if(patient.getVaccStatus().equals("PARTIALLY VACCINATED")){
+                        vaccDueDate = patient.getDueDate();
+                    }
+                    
+
+                    ArrayList<Integer> validSlotIndices = selectedHospital.getNShowValidSlots(vacc, vaccDueDate);
+                    if(validSlotIndices.size()==0){
+                        System.out.println("No slots available.");
+                        continue;
+                    }
+                    System.out.print("Choose slot: ");
+                    int chosenSlotInd = Integer.parseInt(br.readLine());
+                    while(!(chosenSlotInd>=0 && chosenSlotInd< validSlotIndices.size())){
+                        System.out.println("Invalid option try again");
+                        System.out.print("Choose slot: ");
+                        chosenSlotInd = Integer.parseInt(br.readLine());
+                    }
+
+                    selectedHospital.updateSlot(validSlotIndices.get(chosenSlotInd));
+                    patient.updatePatient(vacc,  selectedHospital.getSlots().get(validSlotIndices.get(chosenSlotInd)));
+                    System.out.println(patient.getName()+" vaccinated with "+patient.getVaccAdministered().getName());
+                    
+
                     
                 }else if(searchOpt==3){
                     continue;
@@ -235,7 +288,7 @@ public class App {
             }else if(choice == 8){
                 break;
             }else{
-                //TODO:remove below lines (x.y() types). Only for testing.  
+                
 
                 // Vaccine.showVacc();
                 // Hospital.showHospitals();
