@@ -98,6 +98,18 @@ public class App {
             }else if(choice == 5){
 
             }else if(choice == 6){
+                System.out.print("Enter Hospital ID: ");
+                
+                String enteredId = br.readLine();
+                Hospital selectedHospital = Hospital.getHospById(enteredId);
+                while(selectedHospital == null){
+                    System.out.print("Enter Hospital ID: ");
+                  
+                    enteredId = br.readLine();
+                    selectedHospital = Hospital.getHospById(enteredId);
+                }
+                System.out.println(selectedHospital.getName());
+                selectedHospital.showSlots();
 
             }else if(choice == 7){
 

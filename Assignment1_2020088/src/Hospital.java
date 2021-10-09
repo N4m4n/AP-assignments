@@ -65,6 +65,14 @@ public class Hospital {
     
    }
 
+   public void showSlots(){
+        ArrayList<Slots> temp = this.slots;
+        for(int i = 0; i < temp.size(); i++){
+             Slots tempSlot = temp.get(i);
+             System.out.println("Day: "+tempSlot.getDayNo()+", Vaccine: "+tempSlot.getVaccineGiven()+", Available Quantity: "+tempSlot.getQuantity());
+        }
+   }
+
    public static void showHospitals(){
         System.out.println();
         for(int i=0; i<allHospitals.size(); i++){
