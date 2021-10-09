@@ -28,6 +28,14 @@ public class Vaccine {
         }
     }
 
+    public static void showVaccNames(){
+        System.out.println();
+        for(int i = 0; i < allVaccines.size();i++){
+            Vaccine temp = allVaccines.get(i);
+            System.out.println(i+": "+temp.getName());
+        }
+    }
+
 
     public String getName(){
         return this.vname;
@@ -37,6 +45,10 @@ public class Vaccine {
     }
     public int getGap(){
         return this.gapBetweenDose;
+    }
+    
+    public static ArrayList<Vaccine> getList(){
+        return allVaccines;
     }
 
 }

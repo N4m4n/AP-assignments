@@ -1,6 +1,10 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 public class Hospital {
+    //Class variables 
    private static ArrayList<Hospital> allHospitals = new ArrayList<Hospital>();
+   //Instance variables.
+   private ArrayList<Slots> slots = new ArrayList<Slots>();
    private String Hname;
    private String pincode;
    private String id;
@@ -29,6 +33,38 @@ public class Hospital {
        
    }
 
+
+
+   public void addSlot(int noOfSlots){
+        Scanner sc = new Scanner(System.in);
+        for(int i = 0; i < noOfSlots; i++){
+             System.out.print("Enter the day number: " );
+             int day = sc.nextInt();
+        
+             System.out.print("Enter quantity: " );
+             int quantity = sc.nextInt();
+
+             Vaccine.showVaccNames();
+             System.out.print("Enter index: ");
+             int vaccIndex = sc.nextInt();
+
+             while(!(vaccIndex >= 0 && vaccIndex < Vaccine.getList().size())) {
+                  System.out.println("Invalid index. Please try again.");
+                  Vaccine.showVaccNames();
+                  System.out.print("Enter index: ");
+                  
+                    vaccIndex = sc.nextInt();
+           
+             }         
+
+             Slots toAdd = new Slots(day, quantity, Vaccine.getList().get(vaccIndex).getName());
+             this.slots.add(toAdd);
+             System.out.println("Slot added by Hospital "+this.getId()+" for Day "+day+", Available quantity: "+quantity+" of Vaccine "+toAdd.getVaccineGiven());
+
+        }
+    
+   }
+
    public static void showHospitals(){
         System.out.println();
         for(int i=0; i<allHospitals.size(); i++){
@@ -40,6 +76,19 @@ public class Hospital {
         }
         
    }
+
+   public static Hospital getHospById (String s){
+     
+     for(int i = 0; i < allHospitals.size(); i++){
+          if(allHospitals.get(i).getId().equals(s)){
+               return allHospitals.get(i);
+          }
+     }
+     System.out.println("Could not find this ID. Pls enter again");
+     return null;
+   
+}
+   
 
    public String getId(){
         return this.id;

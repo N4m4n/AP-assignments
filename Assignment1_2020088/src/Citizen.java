@@ -4,10 +4,10 @@ public class Citizen {
    private String UID;
    private String vaccStatus;
    private String cname;
-   private Vaccine vaccineAdministed;
+   private Vaccine vaccineAdministered;
    private int dosesTaken;
    private int dueDate;
-   
+
 
    private static ArrayList<Citizen> allCitizens = new ArrayList<Citizen>();
    public Citizen(String name, int age, String id){
