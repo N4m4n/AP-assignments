@@ -7,6 +7,7 @@ public class Citizen {
    private Vaccine vaccineAdministered;
    private int dosesTaken;
    private int dueDate;
+   private int dosesLeft;
 
 
    private static ArrayList<Citizen> allCitizens = new ArrayList<Citizen>();
@@ -15,6 +16,7 @@ public class Citizen {
        this.UID = id;
        this.age = age;
        this.vaccStatus = "REGISTERED";
+       this.dosesTaken = 0;
        if(age<18){
            System.out.println("Did not add this citizen as only above 18 citizens are allowed ");
        }else if(id.length()!=12){
@@ -51,8 +53,30 @@ public class Citizen {
     }
 
 
-    public void updatePatient(Vaccine givenDose){
-        
+    public void updatePatient(Vaccine givenDose, Slots slotUsed){
+        if(this.vaccStatus.equals("REGISTERED")){
+            this.vaccineAdministered = givenDose;
+            this.dosesTaken+=1;
+            this.dosesLeft = givenDose.getDoses()-1;
+            if(dosesLeft==0){
+                this.vaccStatus = "FULLY VACCINATED";
+            }else{
+                this.vaccStatus = "PARTIALLY VACCINATED";
+                this.dueDate = slotUsed.getDayNo()+givenDose.getGap();
+            }
+            
+
+        }else{
+            this.dosesTaken+=1;
+            this.dosesLeft -=1 ;
+            if(dosesLeft==0){
+                this.vaccStatus = "FULLY VACCINATED";
+            }else{
+                this.vaccStatus = "PARTIALLY VACCINATED";
+                this.dueDate = slotUsed.getDayNo()+givenDose.getGap();
+            }
+
+        }
     }
 
     public int getDueDate(){

@@ -1,10 +1,10 @@
 public class Slots {
 
     private int dayNo;
-    private String vaccineGiven;
+    private Vaccine vaccineGiven;
     private int quantity;
     
-    public Slots(int dayNo, int quantity, String vaccineGiven){
+    public Slots(int dayNo, int quantity, Vaccine vaccineGiven){
         this.quantity = quantity;
         this.dayNo = dayNo;
         this.vaccineGiven = vaccineGiven;
@@ -14,7 +14,7 @@ public class Slots {
         this.quantity = newquantity;
     }
 
-    public String getVaccineGiven(){
+    public Vaccine getVaccineGiven(){
         return this.vaccineGiven;
     }
     public int getDayNo(){

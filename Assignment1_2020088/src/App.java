@@ -152,13 +152,28 @@ public class App {
                         }
 
                         selectedHospital.updateSlot(chosenSlot);
-                        patient.updatePatient();
-                        System.out.println(patient.getName()+" vaccinated with "+selectedHospital.getSlots().get(chosenSlot).getVaccineGiven());
+                        patient.updatePatient(selectedHospital.getSlots().get(chosenSlot).getVaccineGiven(), selectedHospital.getSlots().get(chosenSlot));
+                        System.out.println(patient.getName()+" vaccinated with "+selectedHospital.getSlots().get(chosenSlot).getVaccineGiven().getName());
     
 
 
                     }else{
-                        
+                        Vaccine prevVacc = patient.getVaccAdministered();
+                        int vaccDueDate = patient.getDueDate();
+                        ArrayList<Integer> validSlotIndices = selectedHospital.getNShowValidSlots(prevVacc, vaccDueDate);
+                        System.out.print("Choose slot: ");
+                        int chosenSlotInd = sc.nextInt();
+                        while(!(chosenSlotInd>=0 && chosenSlotInd< validSlotIndices.size())){
+                            System.out.println("Invalid option try again");
+                            System.out.print("Choose slot: ");
+                            chosenSlotInd = sc.nextInt();
+                        }
+                        selectedHospital.updateSlot(validSlotIndices.get(chosenSlotInd));
+                        patient.updatePatient(patient.getVaccAdministered() ,  selectedHospital.getSlots().get(validSlotIndices.get(chosenSlotInd)));
+                        System.out.println(patient.getName()+" vaccinated with "+patient.getVaccAdministered().getName());
+    
+
+
                     }
                     
                 }else if(searchOpt==2){
@@ -183,6 +198,27 @@ public class App {
                 selectedHospital.showSlots();
 
             }else if(choice == 7){
+                System.out.print("Enter patient Unique ID: ");
+                String enteredUID = br.readLine();
+                Citizen patient = Citizen.getCitizenById(enteredUID);
+                while(patient == null){
+                   
+                    System.out.print("Enter patient Unique ID: ");
+                    enteredUID = br.readLine();
+                    patient = Citizen.getCitizenById(enteredUID);
+
+                }
+                System.out.println(patient.getVaccStatus());
+                if(patient.getVaccStatus().equals("PARTIALLY VACCINATED")){
+                    System.out.println("Vaccine Given: "+patient.getVaccAdministered());
+                    System.out.println("Number of Doses given: "+patient.getDosesTaken());
+                    System.out.println("Next Dose due date: "+patient.getDueDate());
+                }else if (patient.getVaccStatus().equals("FULLY VACCINATED")){
+                    System.out.println("Vaccine Given: "+patient.getVaccAdministered());
+                    System.out.println("Number of Doses given: "+patient.getDosesTaken());
+
+                }
+
 
             }else if(choice == 8){
                 break;

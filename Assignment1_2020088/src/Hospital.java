@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Hospital {
@@ -57,7 +58,7 @@ public class Hospital {
            
              }         
 
-             Slots toAdd = new Slots(day, quantity, Vaccine.getList().get(vaccIndex).getName());
+             Slots toAdd = new Slots(day, quantity, Vaccine.getList().get(vaccIndex));
              this.slots.add(toAdd);
              System.out.println("Slot added by Hospital "+this.getId()+" for Day "+day+", Available quantity: "+quantity+" of Vaccine "+toAdd.getVaccineGiven());
 
@@ -83,6 +84,19 @@ public class Hospital {
              Slots tempSlot = temp.get(i);
              System.out.println(i+"--> Day: "+tempSlot.getDayNo()+", Vaccine: "+tempSlot.getVaccineGiven()+", Available Quantity: "+tempSlot.getQuantity());
         }
+   }
+
+   public ArrayList<Integer> getNShowValidSlots(Vaccine prevVacc, int vaccDueDate){
+        ArrayList<Integer> toRet = new ArrayList<Integer>();
+        int ptr = 0;
+        for(int i = 0; i < this.slots.size(); i++){
+             Slots temp = this.slots.get(i);
+             if((temp.getVaccineGiven().equals(prevVacc))&&(temp.getDayNo()>=vaccDueDate)){
+                    System.out.println(ptr+"--> Day: "+temp.getDayNo()+", Vaccine: "+temp.getVaccineGiven()+", Available Quantity: "+temp.getQuantity());
+                    toRet.add(i);
+             }
+        }
+        return toRet;
    }
 
    public static void showHospitals(){
