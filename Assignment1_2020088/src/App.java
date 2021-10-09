@@ -1,9 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 public class App {
     static void printSearchMenu(){
         System.out.println("1. Search by area");
@@ -30,7 +28,7 @@ public class App {
         while(true){
             printMenu();
              
-            int choice = sc.nextInt();
+            int choice = Integer.parseInt(br.readLine());
 
       
             if(choice == 1){
@@ -39,11 +37,13 @@ public class App {
                 String vacName = br.readLine();
         
                 System.out.print("No of doses: ");
-                int noOfDoses = sc.nextInt();
-    
-
-                System.out.print("Gap between doses: ");
-                int gap = sc.nextInt();
+                int noOfDoses = Integer.parseInt(br.readLine());
+                int gap = 0;
+                if(noOfDoses>1){
+                    System.out.print("Gap between doses: ");
+                    gap = Integer.parseInt(br.readLine());
+                }
+                
            
                 System.out.println();
 
@@ -74,7 +74,7 @@ public class App {
                 String citName = br.readLine();
                  
                 System.out.print("Age: ");
-                int age = sc.nextInt();
+                int age = Integer.parseInt(br.readLine());
         
                 System.out.print("Unique ID: ");
          
@@ -97,7 +97,7 @@ public class App {
                     selectedHospital = Hospital.getHospById(enteredId);
                 }
                 System.out.print("Enter no of slots: ");
-                int noOfSlots = sc.nextInt();
+                int noOfSlots = Integer.parseInt(br.readLine());
        
                 selectedHospital.addSlot(noOfSlots);
                 
@@ -120,17 +120,21 @@ public class App {
                 }
                 printSearchMenu();
                 System.out.print("Enter option: ");
-                int searchOpt = sc.nextInt();
+                int searchOpt = Integer.parseInt(br.readLine());
                 while(!(searchOpt>=1 && searchOpt<=3)){
                     System.out.println("Invalid input. Try again");
                     printSearchMenu();
                     System.out.print("Enter option: ");
-                    searchOpt = sc.nextInt();
+                    searchOpt = Integer.parseInt(br.readLine());
                 }
                 if(searchOpt==1){
                     System.out.print("Enter pincode: ");
                     String pincode = br.readLine();
                     ArrayList<Integer> match = Hospital.getHospitalsIndexInPin(pincode);
+                    if(match.size()==0){
+                        System.out.println("No hospital in provided pincode");
+                        continue;
+                    }
                     System.out.print("Enter Hospital ID: ");
                     String enteredId = br.readLine();                    
                     Hospital selectedHospital = Hospital.getHospById(enteredId);
@@ -140,15 +144,19 @@ public class App {
                         enteredId = br.readLine();
                         selectedHospital = Hospital.getHospById(enteredId);
                     }
+                    if(selectedHospital.getSlots().size() == 0){
+                        System.out.println("This hospital has no slots");
+                        continue;
+                    }
 
                     if(patient.getVaccStatus().equals("REGISTERED")){
                         selectedHospital.showSlots();
                         System.out.print("Choose slot: ");
-                        int chosenSlot = sc.nextInt();
+                        int chosenSlot = Integer.parseInt(br.readLine());
                         while(!(chosenSlot>=0 && chosenSlot< selectedHospital.getSlots().size())){
                             System.out.println("Invalid slot try again");
                             System.out.print("Choose slot: ");
-                            chosenSlot = sc.nextInt();
+                            chosenSlot = Integer.parseInt(br.readLine());
                         }
 
                         selectedHospital.updateSlot(chosenSlot);
@@ -161,12 +169,16 @@ public class App {
                         Vaccine prevVacc = patient.getVaccAdministered();
                         int vaccDueDate = patient.getDueDate();
                         ArrayList<Integer> validSlotIndices = selectedHospital.getNShowValidSlots(prevVacc, vaccDueDate);
+                        if(validSlotIndices.size()==0){
+                            System.out.println("No slots available.");
+                            continue;
+                        }
                         System.out.print("Choose slot: ");
-                        int chosenSlotInd = sc.nextInt();
+                        int chosenSlotInd = Integer.parseInt(br.readLine());
                         while(!(chosenSlotInd>=0 && chosenSlotInd< validSlotIndices.size())){
                             System.out.println("Invalid option try again");
                             System.out.print("Choose slot: ");
-                            chosenSlotInd = sc.nextInt();
+                            chosenSlotInd = Integer.parseInt(br.readLine());
                         }
                         selectedHospital.updateSlot(validSlotIndices.get(chosenSlotInd));
                         patient.updatePatient(patient.getVaccAdministered() ,  selectedHospital.getSlots().get(validSlotIndices.get(chosenSlotInd)));
@@ -177,7 +189,7 @@ public class App {
                     }
                     
                 }else if(searchOpt==2){
-
+                    
                 }else if(searchOpt==3){
                     continue;
                 }
@@ -210,11 +222,11 @@ public class App {
                 }
                 System.out.println(patient.getVaccStatus());
                 if(patient.getVaccStatus().equals("PARTIALLY VACCINATED")){
-                    System.out.println("Vaccine Given: "+patient.getVaccAdministered());
+                    System.out.println("Vaccine Given: "+patient.getVaccAdministered().getName());
                     System.out.println("Number of Doses given: "+patient.getDosesTaken());
                     System.out.println("Next Dose due date: "+patient.getDueDate());
                 }else if (patient.getVaccStatus().equals("FULLY VACCINATED")){
-                    System.out.println("Vaccine Given: "+patient.getVaccAdministered());
+                    System.out.println("Vaccine Given: "+patient.getVaccAdministered().getName());
                     System.out.println("Number of Doses given: "+patient.getDosesTaken());
 
                 }
@@ -235,6 +247,6 @@ public class App {
         
         }
         System.out.println("Thank you for using Covin portal.");
-
+        sc.close();
     }
 }

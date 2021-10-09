@@ -54,6 +54,7 @@ public class Citizen {
 
 
     public void updatePatient(Vaccine givenDose, Slots slotUsed){
+        System.out.println(givenDose.getDoses());
         if(this.vaccStatus.equals("REGISTERED")){
             this.vaccineAdministered = givenDose;
             this.dosesTaken+=1;

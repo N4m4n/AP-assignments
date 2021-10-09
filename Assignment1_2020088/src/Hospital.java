@@ -1,5 +1,6 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 public class Hospital {
     //Class variables 
@@ -36,34 +37,35 @@ public class Hospital {
 
 
 
-   public void addSlot(int noOfSlots){
+   public void addSlot(int noOfSlots) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         Scanner sc = new Scanner(System.in);
         for(int i = 0; i < noOfSlots; i++){
              System.out.print("Enter the day number: " );
-             int day = sc.nextInt();
+             int day = Integer.parseInt(br.readLine());
         
              System.out.print("Enter quantity: " );
-             int quantity = sc.nextInt();
+             int quantity = Integer.parseInt(br.readLine());
 
              Vaccine.showVaccNames();
              System.out.print("Enter index: ");
-             int vaccIndex = sc.nextInt();
+             int vaccIndex = Integer.parseInt(br.readLine());
 
              while(!(vaccIndex >= 0 && vaccIndex < Vaccine.getList().size())) {
                   System.out.println("Invalid index. Please try again.");
                   Vaccine.showVaccNames();
                   System.out.print("Enter index: ");
                   
-                    vaccIndex = sc.nextInt();
+                    vaccIndex = Integer.parseInt(br.readLine());
            
              }         
 
              Slots toAdd = new Slots(day, quantity, Vaccine.getList().get(vaccIndex));
              this.slots.add(toAdd);
-             System.out.println("Slot added by Hospital "+this.getId()+" for Day "+day+", Available quantity: "+quantity+" of Vaccine "+toAdd.getVaccineGiven());
+             System.out.println("Slot added by Hospital "+this.getId()+" for Day "+day+", Available quantity: "+quantity+" of Vaccine "+toAdd.getVaccineGiven().getName());
 
         }
-        sc.close();
+     //    sc.close();
     
    }
 
@@ -82,7 +84,7 @@ public class Hospital {
         ArrayList<Slots> temp = this.slots;
         for(int i = 0; i < temp.size(); i++){
              Slots tempSlot = temp.get(i);
-             System.out.println(i+"--> Day: "+tempSlot.getDayNo()+", Vaccine: "+tempSlot.getVaccineGiven()+", Available Quantity: "+tempSlot.getQuantity());
+             System.out.println(i+"--> Day: "+tempSlot.getDayNo()+", Vaccine: "+tempSlot.getVaccineGiven().getName()+", Available Quantity: "+tempSlot.getQuantity());
         }
    }
 
@@ -92,7 +94,7 @@ public class Hospital {
         for(int i = 0; i < this.slots.size(); i++){
              Slots temp = this.slots.get(i);
              if((temp.getVaccineGiven().equals(prevVacc))&&(temp.getDayNo()>=vaccDueDate)){
-                    System.out.println(ptr+"--> Day: "+temp.getDayNo()+", Vaccine: "+temp.getVaccineGiven()+", Available Quantity: "+temp.getQuantity());
+                    System.out.println(ptr+"--> Day: "+temp.getDayNo()+", Vaccine: "+temp.getVaccineGiven().getName()+", Available Quantity: "+temp.getQuantity());
                     toRet.add(i);
              }
         }
@@ -127,7 +129,7 @@ public class Hospital {
      for(int i = 0; i < allHospitals.size(); i++){
           Hospital temp = allHospitals.get(i);
           if(temp.getPincode().equals(s)){
-               System.out.println(temp.getPincode()+" "+temp.getName());
+               System.out.println(temp.getId()+" "+temp.getName());
                toRet.add(i);
           }
      }
