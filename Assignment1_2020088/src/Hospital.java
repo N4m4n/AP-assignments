@@ -62,14 +62,26 @@ public class Hospital {
              System.out.println("Slot added by Hospital "+this.getId()+" for Day "+day+", Available quantity: "+quantity+" of Vaccine "+toAdd.getVaccineGiven());
 
         }
+        sc.close();
     
+   }
+
+   public void updateSlot(int chosenSlot){
+        Slots toUpdate = this.slots.get(chosenSlot);
+        int currQuantitiy = toUpdate.getQuantity();
+        if (currQuantitiy <=1){
+             this.slots.remove(chosenSlot);
+        }else{
+             toUpdate.setQuantity(currQuantitiy-1);
+        }
+       
    }
 
    public void showSlots(){
         ArrayList<Slots> temp = this.slots;
         for(int i = 0; i < temp.size(); i++){
              Slots tempSlot = temp.get(i);
-             System.out.println("Day: "+tempSlot.getDayNo()+", Vaccine: "+tempSlot.getVaccineGiven()+", Available Quantity: "+tempSlot.getQuantity());
+             System.out.println(i+"--> Day: "+tempSlot.getDayNo()+", Vaccine: "+tempSlot.getVaccineGiven()+", Available Quantity: "+tempSlot.getQuantity());
         }
    }
 
@@ -96,7 +108,17 @@ public class Hospital {
      return null;
    
 }
-   
+   public static ArrayList<Integer> getHospitalsIndexInPin(String s){
+     ArrayList<Integer> toRet = new ArrayList<Integer>();
+     for(int i = 0; i < allHospitals.size(); i++){
+          Hospital temp = allHospitals.get(i);
+          if(temp.getPincode().equals(s)){
+               System.out.println(temp.getPincode()+" "+temp.getName());
+               toRet.add(i);
+          }
+     }
+     return toRet;
+   }
 
    public String getId(){
         return this.id;
@@ -106,6 +128,9 @@ public class Hospital {
    }
    public String getPincode(){
         return this.pincode;
+   }
+   public ArrayList<Slots> getSlots(){
+        return this.slots;
    }
 
     

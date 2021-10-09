@@ -37,7 +37,33 @@ public class Citizen {
         System.out.println();
     }
     
-}
+    }  
+    public static Citizen getCitizenById (String s){
+     
+    for(int i = 0; i < allCitizens.size(); i++){
+         if(allCitizens.get(i).getId().equals(s)){
+              return allCitizens.get(i);
+         }
+    }
+    System.out.println("Could not find this ID. Pls enter again");
+    return null;
+  
+    }
+
+
+    public void updatePatient(Vaccine givenDose){
+        
+    }
+
+    public int getDueDate(){
+        return this.dueDate;
+    }
+    public Vaccine getVaccAdministered(){
+        return this.vaccineAdministered;
+    }
+    public int getDosesTaken(){
+        return this.dosesTaken;
+    }
 
    public String getName(){
        return this.cname;
@@ -50,6 +76,9 @@ public class Citizen {
    }
    public String getVaccStatus(){
        return this.vaccStatus;
+   }
+   public void setVaccStatus(String s){
+       this.vaccStatus = s;
    }
     
 }

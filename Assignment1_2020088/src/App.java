@@ -1,9 +1,16 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 public class App {
-
+    static void printSearchMenu(){
+        System.out.println("1. Search by area");
+        System.out.println("2. Search by Vaccine");
+        System.out.println("3. Exit");
+        
+    }
     static void printMenu(){
         System.out.println("Choose an option :");
         System.out.println("1. Add vaccine");
@@ -73,6 +80,7 @@ public class App {
          
                 String uid = br.readLine();
                 Citizen currCiti = new Citizen(citName, age, uid);
+                currCiti.setVaccStatus("REGISTERED");
                 System.out.println("Citizen Name: "+currCiti.getName()+", Age: "+currCiti.getAge()+", Unique ID "+currCiti.getId());
                 System.out.println();
 
@@ -96,6 +104,69 @@ public class App {
 
 
             }else if(choice == 5){
+                System.out.print("Enter patient Unique ID: ");
+                String enteredUID = br.readLine();
+                Citizen patient = Citizen.getCitizenById(enteredUID);
+                while(patient == null){
+                   
+                    System.out.print("Enter patient Unique ID: ");
+                    enteredUID = br.readLine();
+                    patient = Citizen.getCitizenById(enteredUID);
+
+                }
+                if(patient.getVaccStatus().equals("FULLY VACCINATED")){
+                    System.out.println("This person is already fully vaccinated.");
+                    continue;
+                }
+                printSearchMenu();
+                System.out.print("Enter option: ");
+                int searchOpt = sc.nextInt();
+                while(!(searchOpt>=1 && searchOpt<=3)){
+                    System.out.println("Invalid input. Try again");
+                    printSearchMenu();
+                    System.out.print("Enter option: ");
+                    searchOpt = sc.nextInt();
+                }
+                if(searchOpt==1){
+                    System.out.print("Enter pincode: ");
+                    String pincode = br.readLine();
+                    ArrayList<Integer> match = Hospital.getHospitalsIndexInPin(pincode);
+                    System.out.print("Enter Hospital ID: ");
+                    String enteredId = br.readLine();                    
+                    Hospital selectedHospital = Hospital.getHospById(enteredId);
+                    while(selectedHospital == null){
+                        System.out.print("Enter Hospital ID: ");
+                      
+                        enteredId = br.readLine();
+                        selectedHospital = Hospital.getHospById(enteredId);
+                    }
+
+                    if(patient.getVaccStatus().equals("REGISTERED")){
+                        selectedHospital.showSlots();
+                        System.out.print("Choose slot: ");
+                        int chosenSlot = sc.nextInt();
+                        while(!(chosenSlot>=0 && chosenSlot< selectedHospital.getSlots().size())){
+                            System.out.println("Invalid slot try again");
+                            System.out.print("Choose slot: ");
+                            chosenSlot = sc.nextInt();
+                        }
+
+                        selectedHospital.updateSlot(chosenSlot);
+                        patient.updatePatient();
+                        System.out.println(patient.getName()+" vaccinated with "+selectedHospital.getSlots().get(chosenSlot).getVaccineGiven());
+    
+
+
+                    }else{
+                        
+                    }
+                    
+                }else if(searchOpt==2){
+
+                }else if(searchOpt==3){
+                    continue;
+                }
+
 
             }else if(choice == 6){
                 System.out.print("Enter Hospital ID: ");
