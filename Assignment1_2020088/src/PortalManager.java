@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -93,12 +92,12 @@ public class PortalManager {
                     System.out.println("This person is already fully vaccinated.");
                     return;
                 }
-                    App.printSearchMenu();
+                    printSearchMenu();
                 System.out.print("Enter option: ");
                 int searchOpt = Integer.parseInt(br.readLine());
                 while(!(searchOpt>=1 && searchOpt<=3)){
                     System.out.println("Invalid input. Try again");
-                    App.printSearchMenu();
+                    printSearchMenu();
                     System.out.print("Enter option: ");
                     searchOpt = Integer.parseInt(br.readLine());
                 }
@@ -267,6 +266,27 @@ public class PortalManager {
 
                 }
 
+    }
+
+    static void printMenu(){
+        System.out.println("-------------------------------------------");
+        System.out.println("Choose an option :");
+        System.out.println("1. Add vaccine");
+        System.out.println("2. Register Hospital");
+        System.out.println("3. Register Citizen");
+        System.out.println("4. Add slot for Vaccination.");
+        System.out.println("5. Book slot for Vaccinaton");
+        System.out.println("6. List all slots for a hospital");
+        System.out.println("7. Check Vaccination Status");
+        System.out.println("8. Exit");
+        System.out.println("-------------------------------------------");
+    }
+
+    static void printSearchMenu(){
+        System.out.println("1. Search by area");
+        System.out.println("2. Search by Vaccine");
+        System.out.println("3. Exit");
+        
     }
 
 
