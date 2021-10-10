@@ -107,6 +107,7 @@ public class Hospital {
              if((temp.getVaccineGiven().equals(prevVacc))&&(temp.getDayNo()>=vaccDueDate)){
                     System.out.println(ptr+"--> Day: "+temp.getDayNo()+", Vaccine: "+temp.getVaccineGiven().getName()+", Available Quantity: "+temp.getQuantity());
                     toRet.add(i);
+                    ptr++;
              }
         }
         return toRet;

@@ -261,6 +261,9 @@ public class App {
                 }
                 System.out.println(selectedHospital.getName());
                 selectedHospital.showSlots();
+                if(selectedHospital.getSlots().size() == 0){
+                    System.out.println("No more slots for this hospital");
+                }
 
             }else if(choice == 7){
                 System.out.print("Enter patient Unique ID: ");
