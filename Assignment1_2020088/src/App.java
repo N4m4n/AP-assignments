@@ -10,6 +10,7 @@ public class App {
         
     }
     static void printMenu(){
+        System.out.println("-------------------------------------------");
         System.out.println("Choose an option :");
         System.out.println("1. Add vaccine");
         System.out.println("2. Register Hospital");
@@ -19,6 +20,7 @@ public class App {
         System.out.println("6. List all slots for a hospital");
         System.out.println("7. Check Vaccination Status");
         System.out.println("8. Exit");
+        System.out.println("-------------------------------------------");
     }
   
     public static void main(String[] args) throws Exception {
