@@ -86,6 +86,10 @@ public class App {
 
 
             }else if(choice == 4){
+                if(Vaccine.getList().size()==0){
+                    System.out.println("No vaccines registered in COVIN yet.");
+                    continue;
+                }
                 System.out.print("Enter Hospital ID: ");
                 
                 String enteredId = br.readLine();

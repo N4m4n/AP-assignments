@@ -46,7 +46,6 @@ public class Vaccine {
         }
     }
 
-
     public String getName(){
         return this.vname;
     }
@@ -60,5 +59,4 @@ public class Vaccine {
     public static ArrayList<Vaccine> getList(){
         return allVaccines;
     }
-
 }
