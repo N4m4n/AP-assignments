@@ -17,8 +17,22 @@ public class StudentPortal{
             printStuMenu();
             //TODO: Start working here FOR INSTRUCTOR METHOD
             int job = Integer.parseInt(br.readLine());
-            if(job==7){
+            if(job==1){
+                
+            }else if(job==2){
+
+            }else if(job==3){
+
+            }else if(job==4){
+
+            }else if(job==5){
+
+            }else if(job==6){
+
+            }else if(job==7){
                 return;
+            }else{
+                System.out.println("invalid input");
             }
         }
  

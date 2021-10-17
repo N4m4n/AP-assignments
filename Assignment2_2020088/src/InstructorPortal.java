@@ -16,8 +16,28 @@ public class InstructorPortal {
         while(true){
             printInstMenu();
             int job = Integer.parseInt(br.readLine());
-            if(job==9){
+            if(job==1){
+                currUser.addMaterial();
+
+            }else if(job==2){
+            
+
+            }else if(job==3){
+
+            }else if(job==4){
+
+            }else if(job==5){
+
+            }else if(job==6){
+
+            }else if(job==7){
+
+            }else if(job==8){
+
+            }else if(job==9){
                 return;
+            }else{
+                System.out.println("invalid input");
             }
             //TODO: Start working here FOR INSTRUCTOR METHOD
         }

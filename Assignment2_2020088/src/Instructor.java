@@ -5,5 +5,8 @@ public class Instructor implements User {
     }
     public String getName(){
         return this.name;
+    }
+    public void addMaterial(){
+        
     }    
 }
