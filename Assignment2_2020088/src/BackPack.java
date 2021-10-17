@@ -18,9 +18,11 @@ public class BackPack {
     }     
 }
     private static  void printMainMenu(){
+        System.out.println("------------------------------------------------");
         System.out.println("Welcome to BackPack");
         System.out.println("1. Enter as instructor.");
         System.out.println("2. Enter as student.");
         System.out.println("3. Exit");
+        System.out.println("------------------------------------------------");
     }    
 }

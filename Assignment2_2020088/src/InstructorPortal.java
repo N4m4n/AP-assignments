@@ -12,21 +12,29 @@ public class InstructorPortal {
             return;
         }
         currUser = Data.getInstructors().get(instNo);
+        System.out.println("LOGGED IN AS INSTRUCTOR ID : "+currUser.getName());
         while(true){
             printInstMenu();
+            int job = Integer.parseInt(br.readLine());
+            if(job==9){
+                return;
+            }
             //TODO: Start working here FOR INSTRUCTOR METHOD
         }
  
     }
 
     public static void displayInstructors(){
+        System.out.println();
         for(int i = 0; i <Data.getInstructors().size(); i++){
             System.out.print(i);
             System.out.println(" "+Data.getInstructors().get(i).getName());
         }
+        System.out.println();
     }
 
     public static void printInstMenu(){
+        System.out.println("------------------------------------------------");
         System.out.println("1. Add class material");
         System.out.println("2. Add assessments");
         System.out.println("3. View lecture materials");
@@ -36,6 +44,7 @@ public class InstructorPortal {
         System.out.println("7. View comments");
         System.out.println("8. Add comments");
         System.out.println("9. Logout");
+        System.out.println("------------------------------------------------");
     }
     
     
