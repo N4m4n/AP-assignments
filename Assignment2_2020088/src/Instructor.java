@@ -17,6 +17,7 @@ public class Instructor implements User {
             String topic = br.readLine();
             System.out.print("Enter no of slides ");
             int n = Integer.parseInt(br.readLine());
+            System.out.println("Enter the content slide by slide: ");
             String arr[] = new String[n];
             for(int i = 0; i < n; i++){
                 arr[i] = br.readLine();

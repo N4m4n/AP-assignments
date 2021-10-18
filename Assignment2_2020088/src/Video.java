@@ -1,9 +1,9 @@
 public class Video implements Material {
     private String topic;
     private String filename;
-    private User uploader;
+    private Instructor uploader;
     private String timeOfUpload;
-    public Video(String t, String file, User uploader) {
+    public Video(String t, String file, Instructor uploader) {
         this.topic = t;
         this.filename = file;
         this.uploader = uploader;
@@ -22,10 +22,10 @@ public class Video implements Material {
     public String getFileName(){
         return this.filename;
     } 
-    public User getUser(){
+    public Instructor getUser(){
         return this.uploader;
     }
-    public String getUploadtime(){
+    public String getTimeOfUpload(){
         return this.timeOfUpload;
     }
     

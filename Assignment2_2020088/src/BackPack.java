@@ -13,6 +13,7 @@ public class BackPack {
             }else if(loggedInAs==3){
                 break;
             }else{
+                Data.displayMaterial();
                 System.out.println("Invalid input. Try again.");
             }
     }     

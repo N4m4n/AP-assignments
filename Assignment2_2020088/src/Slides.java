@@ -3,9 +3,9 @@ public class Slides implements Material {
     private String topic;
     private int noOfSlides;
     private String[] content;
-    private User addedBy;
+    private Instructor addedBy;
     private String timeOfUpload;
-    public Slides(String t, int n, String[] content, User uploader){
+    public Slides(String t, int n, String[] content, Instructor uploader){
         this.topic = t;
         this.noOfSlides = n;
         this.content = content;
@@ -29,7 +29,7 @@ public class Slides implements Material {
     public String[] getContent(){
         return this.content;
     }
-    public User getUploader(){
+    public Instructor getUploader(){
         return this.addedBy;
     }
     public String getTimeOfUpload(){

@@ -30,5 +30,36 @@ public class Data {
     public static ArrayList<Video> getVideos(){
         return allVideos;
     }
+    public static void displayMaterial(){
+        System.out.println("------------------------------------------------------");
+        System.out.println("Videos:");
+        System.out.println("------------------------------------------------------");
+        for(int i = 0; i < allVideos.size(); i++){
+            Video temp = allVideos.get(i);
+            System.out.println("Topic: "+temp.getTopic());
+            System.out.println("File Name: "+temp.getFileName());
+            System.out.println("Uploaded by: "+temp.getUser().getName());
+            System.out.println("Uploaded on "+temp.getTimeOfUpload());
+            System.out.println();
+        }
+        System.out.println("------------------------------------------------------");
+        System.out.println("Lectures:");
+        System.out.println("------------------------------------------------------");
+        for(int i = 0; i < allSlides.size(); i++){
+
+            Slides temp = allSlides.get(i);
+            System.out.println("Topic: "+temp.getTopic());
+            String arr[] = temp.getContent();
+            System.out.println();
+            for(int j = 0; j < arr.length; j++){
+                System.out.println(arr[j]);
+            }
+            System.out.println();
+            System.out.println("Uploaded by: "+temp.getUploader().getName());
+            System.out.println("Uploaded on "+temp.getTimeOfUpload());
+            System.out.println();
+
+        }
+    }
 
 }
