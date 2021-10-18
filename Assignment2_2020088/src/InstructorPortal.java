@@ -42,7 +42,7 @@ public class InstructorPortal {
             }else{
                 System.out.println("invalid input");
             }
-            //TODO: Start working here FOR INSTRUCTOR METHOD
+           
         }
  
     }

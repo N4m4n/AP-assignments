@@ -177,7 +177,7 @@ public class Data {
             Comment temp = allComments.get(i);
             System.out.println("--------------------------------------------------------");
             System.out.println(temp.getComment());
-            if(u1.equals(temp)){
+            if(u1.equals(temp.getCommenter())){
                 System.out.println("Commented By: Me on "+ temp.getUploadTime());
             }else{
                 System.out.println("Commented By: "+temp.getCommenter().getName()+" on "+ temp.getUploadTime());

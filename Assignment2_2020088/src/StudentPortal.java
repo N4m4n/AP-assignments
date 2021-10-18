@@ -17,7 +17,7 @@ public class StudentPortal{
         while(true){
             System.out.println("LOGGED IN AS STUDENT ID : "+currUser.getName());
             printStuMenu();
-            //TODO: Start working here FOR INSTRUCTOR METHOD
+            
             int job = Integer.parseInt(br.readLine());
             if(job==1){
                 currUser.viewMaterials();
