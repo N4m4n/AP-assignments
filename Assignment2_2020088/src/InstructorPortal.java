@@ -17,7 +17,7 @@ public class InstructorPortal {
             printInstMenu();
             int job = Integer.parseInt(br.readLine());
             if(job==1){
-                currUser.addMaterial();
+                currUser.addCont();
 
             }else if(job==2){
             
