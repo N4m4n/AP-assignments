@@ -6,6 +6,7 @@ public class InstructorPortal {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         displayInstructors();
+        System.out.print("Choose id: ");
         int instNo = Integer.parseInt(br.readLine());
         if(instNo>=Data.getInstructors().size()){
             System.out.println("Index entered is too large!");
@@ -27,7 +28,7 @@ public class InstructorPortal {
             }else if(job==4){
                 currUser.viewAssessments();
             }else if(job==5){
-
+                currUser.manageSubmission(0);
             }else if(job==6){
                 currUser.closeAssessment();
             }else if(job==7){

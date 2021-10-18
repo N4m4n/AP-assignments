@@ -6,6 +6,7 @@ public class StudentPortal{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         displayStudents();
+        System.out.print("Choose id: ");
         int stuNo = Integer.parseInt(br.readLine());
         if(stuNo>=Data.getStudents().size()){
             System.out.println("Index entered is too large!");

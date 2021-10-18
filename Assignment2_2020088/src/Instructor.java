@@ -122,8 +122,62 @@ public class Instructor implements User {
     }
 
     @Override
-    public void manageSubmission(int num) {
-        // TODO Auto-generated method stub
+    public void manageSubmission(int num) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        this.viewAssessments();
+        System.out.print("Enter the assessment ID");
+        int assID = Integer.parseInt(reader.readLine());
+        if(assID<0 || assID>=Data.getAssessments().size()) {
+            System.out.println("Invalid ID");
+            return;
+        }
+        Assessment toGrade = Data.getAssessments().get(assID);
+        int arr[] = new int[Data.getStudents().size()];
+        for(int i= 0;i<arr.length;i++) {
+            arr[i] = -1;
+        }
+        for(int i = 0;i<Data.getSubmissions().size();i++) {
+            Submission temp = Data.getSubmissions().get(i);
+            if(temp.getAssessment().equals(toGrade)){
+                if(Data.getSubmissions().get(i).getMarkedBy()==null){
+                    Student s = temp.getStudent();
+                    int idStu = Data.getStudents().indexOf(s);
+                    arr[idStu] = i;
+                }
+
+            }
+        }
+        for(int i = 0; i <arr.length; i++){
+            if(arr[i]!=-1){
+                System.out.println(i+" "+Data.getStudents().get(i).getName());
+            }
+
+        }
+        int studentToGrade = Integer.parseInt(reader.readLine());
+        if(arr[studentToGrade]<0 || studentToGrade>=Data.getStudents().size()){
+            System.out.println("This ID has not submitted");
+            return;
+        }
+        Submission submissionToGrade = Data.getSubmissions().get(arr[studentToGrade]);
+        System.out.println("Submission:-");
+        System.out.println("Sumbmitted: "+submissionToGrade.getAns());
+        System.out.println("-----------------------");
+        System.out.println("Max marks: "+submissionToGrade.getAssessment().getMaxMarks());
+        System.out.print("Marks obtained: ");
+        int marksScored = Integer.parseInt(reader.readLine());
+        if(marksScored>submissionToGrade.getAssessment().getMaxMarks()){
+            System.out.println("Entered marks are greater than max marks Do you wish to cancel?\n1 Yes\n2 No");
+            int c = Integer.parseInt(reader.readLine());
+            if(c == 1){
+                System.out.println("Grade not alloted");
+                return;
+            }
+        }
+        submissionToGrade.setMarks(marksScored);
+        submissionToGrade.setProf(this);
+
+        
+
         
     }   
 }

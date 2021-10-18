@@ -26,5 +26,11 @@ public class Submission {
     public int getMarksObtained(){
         return this.marksObtained;
     }
+    public void setMarks(int marksObtained){
+        this.marksObtained = marksObtained;
+    }
+    public void setProf(Instructor i){
+        this.markedBy = i;
+    }
 
 }

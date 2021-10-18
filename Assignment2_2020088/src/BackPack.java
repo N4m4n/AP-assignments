@@ -5,6 +5,7 @@ public class BackPack {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while(true){
             printMainMenu();
+            
             int loggedInAs = Integer.parseInt(reader.readLine());
             if(loggedInAs==1){
                 InstructorPortal.init();

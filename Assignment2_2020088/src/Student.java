@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+
+import javax.swing.event.SwingPropertyChangeSupport;
+
 import java.io.*;
 public class Student implements User {
     private String name;
@@ -95,7 +98,33 @@ public class Student implements User {
 
 
         }else if(num==1){
-
+            ArrayList<Submission> grded = new ArrayList<Submission>();
+            ArrayList<Submission> ungrded = new ArrayList<Submission>();
+            for(int i=0; i<Data.getSubmissions().size(); i++){
+                Submission t = Data.getSubmissions().get(i);
+                if(t.getStudent().equals(this)){
+                    if(t.getMarkedBy()==null){
+                        ungrded.add(t);
+                    }else{
+                        grded.add(t);
+                    }
+                }
+            }
+            System.out.println("Graded submissions");
+            for(int i = 0 ;i<grded.size();i++){
+                System.out.print("Submission: ");
+                System.out.println(grded.get(i).getAns());
+                System.out.print("Marks scored: ");
+                System.out.println(grded.get(i).getMarksObtained());
+                System.out.print("Graded by: ");
+                System.out.println(grded.get(i).getMarkedBy().getName());
+            }
+            System.out.println();
+            System.out.println("Ungraded submissions");
+            for(int i = 0 ;i<ungrded.size();i++){
+                System.out.print("Submission: ");
+                System.out.println(ungrded.get(i).getAns());
+            }
 
         }
         
