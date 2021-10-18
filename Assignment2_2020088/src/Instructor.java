@@ -119,5 +119,11 @@ public class Instructor implements User {
     public void viewAssessments() {
         Data.displayAssessments();
         
+    }
+
+    @Override
+    public void manageSubmission(int num) {
+        // TODO Auto-generated method stub
+        
     }   
 }

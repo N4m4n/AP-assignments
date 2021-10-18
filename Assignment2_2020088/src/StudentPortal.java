@@ -23,9 +23,9 @@ public class StudentPortal{
             }else if(job==2){
                 currUser.viewAssessments();
             }else if(job==3){
-
+                currUser.manageSubmission(0);
             }else if(job==4){
-
+                currUser.manageSubmission(1);
             }else if(job==5){
                 currUser.viewCommentSection();
             }else if(job==6){

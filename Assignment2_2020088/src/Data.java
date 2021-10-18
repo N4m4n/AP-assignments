@@ -7,6 +7,7 @@ public class Data {
     private static ArrayList<Video> allVideos = new ArrayList<>();
     private static ArrayList<Comment> allComments = new ArrayList<>();
     private static ArrayList<Assessment> allAssessments = new ArrayList<>();
+    private static ArrayList<Submission> allSubmissions = new ArrayList<>();
     public static void addStudent(Student student) {
         allStudents.add(student);
     }
@@ -21,6 +22,9 @@ public class Data {
     }
     public static void addAssessment(Assessment assessment) {
         allAssessments.add(assessment);
+    }
+    public static void addSubmission(Submission submission) {
+        allSubmissions.add(submission);
     }
 
     public static  ArrayList<Instructor> getInstructors(){
@@ -41,11 +45,24 @@ public class Data {
     public static ArrayList<Assessment> getAssessments(){
         return allAssessments;
     }
+    public static ArrayList<Submission> getSubmissions(){
+        return allSubmissions;
+    }
+
+
+    public static void displaySubmissions(){
+        for(int i = 0; i < allSubmissions.size(); i++){
+            System.out.println("Name: "+allSubmissions.get(i).getStudent().getName()+" \nSubmission for : "+allSubmissions.get(i).getAssessment().getProbStatement()+"\nSubmission: "+allSubmissions.get(i).getAns());
+        }
+    }
 
     public static void displayAssessments(){
         System.out.println("------------------------------------------------------");
         System.out.println("List of all assessments:");
         System.out.println("------------------------------------------------------");
+        if(allAssessments.size()==0){
+            System.out.println("Woohoo! No assignments right now! Check back later for new assignments");
+        }
         for(int i = 0; i < allAssessments.size(); i++){
             if(Data.getAssessments().get(i).getIfOpen()){
                 
