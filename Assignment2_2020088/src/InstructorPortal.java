@@ -29,7 +29,7 @@ public class InstructorPortal {
             }else if(job==5){
 
             }else if(job==6){
-
+                currUser.closeAssessment();
             }else if(job==7){
                 currUser.viewCommentSection();
             }else if(job==8){

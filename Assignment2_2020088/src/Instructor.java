@@ -4,6 +4,33 @@ public class Instructor implements User {
     public Instructor(String name){
         this.name = name;
     }
+
+    public void closeAssessment() throws Exception{
+        System.out.println("List of open assingments: " );
+        for(int i = 0;i<Data.getAssessments().size();i++){
+            if(Data.getAssessments().get(i).getIfOpen()){
+                if(Data.getAssessments().get(i).isAsgn()){
+                    System.out.println("ID: "+i+ "Assignment: "+Data.getAssessments().get(i).getProbStatement()+" Max Marks: "+ Data.getAssessments().get(i).getMaxMarks());
+                }else{
+                    System.out.println("ID: "+i+ "Question: "+Data.getAssessments().get(i).getProbStatement());
+                }
+            }
+            System.out.println("-----------------------");
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter ID to close: ");
+        int ID = Integer.parseInt(br.readLine());
+        if(Data.getAssessments().size()<=ID){
+            System.out.println("Invalid ID.");
+            return;
+        }
+        if(Data.getAssessments().get(ID).getIfOpen()==false){
+            System.out.println("Invalid ID or Already closed");
+            return;
+        }else{
+            Data.getAssessments().get(ID).close(this);
+        }
+    }
     
     public void addCont() throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
