@@ -19,7 +19,7 @@ public class Slides implements Material {
         Data.addSlides(this);
         System.out.println("Slides added");
     }
-
+    @Override
     public String getTopic(){
         return this.topic;
     }
@@ -32,6 +32,7 @@ public class Slides implements Material {
     public Instructor getUploader(){
         return this.addedBy;
     }
+    @Override
     public String getTimeOfUpload(){
         return this.timeOfUpload;
     }

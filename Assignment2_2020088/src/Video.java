@@ -15,16 +15,17 @@ public class Video implements Material {
         Data.addVideo(this);
         
     }
-
+    @Override
     public String getTopic(){
         return this.topic;
     }
     public String getFileName(){
         return this.filename;
     } 
-    public Instructor getUser(){
+    public Instructor getUploader(){
         return this.uploader;
     }
+    @Override
     public String getTimeOfUpload(){
         return this.timeOfUpload;
     }

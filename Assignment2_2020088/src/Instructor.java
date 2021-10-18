@@ -45,6 +45,7 @@ public class Instructor implements User {
             System.out.println("Enter the content slide by slide: ");
             String arr[] = new String[n];
             for(int i = 0; i < n; i++){
+                System.out.print("Content of slide "+(i+1)+": ");
                 arr[i] = br.readLine();
             }
             Material currSlides = new Slides(topic, n, arr, this);

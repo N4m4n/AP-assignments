@@ -15,7 +15,7 @@ public class StudentPortal{
         currUser = Data.getStudents().get(stuNo);
         
         while(true){
-            System.out.println("LOGGED IN AS STUDENT ID : "+currUser.getName());
+            System.out.println("Welcome "+currUser.getName());
             printStuMenu();
             
             int job = Integer.parseInt(br.readLine());
@@ -43,7 +43,7 @@ public class StudentPortal{
     }
 
     public static void displayStudents(){
-        System.out.println();
+        System.out.println("Students:");
         for(int i = 0; i <Data.getStudents().size(); i++){
             System.out.print(i);
             System.out.println(" "+Data.getStudents().get(i).getName());

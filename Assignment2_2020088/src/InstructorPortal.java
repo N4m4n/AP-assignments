@@ -15,7 +15,7 @@ public class InstructorPortal {
         currUser = Data.getInstructors().get(instNo);
         
         while(true){
-            System.out.println("LOGGED IN AS INSTRUCTOR ID : "+currUser.getName());
+            System.out.println("Welcome "+currUser.getName());
             printInstMenu();
             int job = Integer.parseInt(br.readLine());
             if(job==1){
@@ -48,7 +48,7 @@ public class InstructorPortal {
     }
 
     public static void displayInstructors(){
-        System.out.println();
+        System.out.println("Instructors:");
         for(int i = 0; i <Data.getInstructors().size(); i++){
             System.out.print(i);
             System.out.println(" "+Data.getInstructors().get(i).getName());
