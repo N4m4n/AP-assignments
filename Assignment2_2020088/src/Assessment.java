@@ -5,4 +5,5 @@ public interface Assessment {
     public boolean isAsgn();
     public boolean getIfOpen();
     public void close(Instructor u);
+    public Instructor getClosedBy();
 }

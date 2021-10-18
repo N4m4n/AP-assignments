@@ -39,7 +39,6 @@ public class Quiz implements Assessment {
 
     @Override
     public boolean isAsgn() {
-        
         return false;
     }
 

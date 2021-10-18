@@ -87,7 +87,7 @@ public class Instructor implements User {
 
             System.out.print("Enter quiz question: ");
             String ques = br.readLine();
-            Assessment currQuiz = new Assignment(ques, 1, this);
+            Assessment currQuiz = new Quiz(ques, 1, this);
             currQuiz.appndAssessments();          
 
         }else{

@@ -42,6 +42,34 @@ public class Data {
         return allAssessments;
     }
 
+    public static void displayAssessments(){
+        System.out.println("------------------------------------------------------");
+        System.out.println("List of all assessments:");
+        System.out.println("------------------------------------------------------");
+        for(int i = 0; i < allAssessments.size(); i++){
+            if(Data.getAssessments().get(i).getIfOpen()){
+                
+                if(Data.getAssessments().get(i).isAsgn()){
+                    System.out.println("ID: "+i+ " Assignment: "+Data.getAssessments().get(i).getProbStatement()+" Max Marks: "+ Data.getAssessments().get(i).getMaxMarks());
+                }else{
+                    System.out.println("ID: "+i+ " Question: "+Data.getAssessments().get(i).getProbStatement());
+                }
+                System.out.println("Status : Open");
+            }else{
+                if(Data.getAssessments().get(i).isAsgn()){
+                    System.out.println("ID: "+i+ " Assignment: "+Data.getAssessments().get(i).getProbStatement()+" Max Marks: "+ Data.getAssessments().get(i).getMaxMarks());
+                }else{
+                    System.out.println("ID: "+i+ " Question: "+Data.getAssessments().get(i).getProbStatement());
+                }
+                System.out.println("Status : Closed by "+Data.getAssessments().get(i).getClosedBy().getName());
+
+            }
+            System.out.println("-----------------------");
+        }
+        
+
+    }
+
     public static void displayMaterial(){
         System.out.println("------------------------------------------------------");
         System.out.println("Videos:");
