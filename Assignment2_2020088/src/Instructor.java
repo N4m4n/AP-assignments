@@ -10,9 +10,9 @@ public class Instructor implements User {
         for(int i = 0;i<Data.getAssessments().size();i++){
             if(Data.getAssessments().get(i).getIfOpen()){
                 if(Data.getAssessments().get(i).isAsgn()){
-                    System.out.println("ID: "+i+ "Assignment: "+Data.getAssessments().get(i).getProbStatement()+" Max Marks: "+ Data.getAssessments().get(i).getMaxMarks());
+                    System.out.println("ID: "+i+ " Assignment: "+Data.getAssessments().get(i).getProbStatement()+" Max Marks: "+ Data.getAssessments().get(i).getMaxMarks());
                 }else{
-                    System.out.println("ID: "+i+ "Question: "+Data.getAssessments().get(i).getProbStatement());
+                    System.out.println("ID: "+i+ " Question: "+Data.getAssessments().get(i).getProbStatement());
                 }
             }
             System.out.println("-----------------------");
