@@ -32,7 +32,7 @@ public class InstructorPortal {
             }else if(job==6){
 
             }else if(job==7){
-
+                currUser.viewCommentSection();
             }else if(job==8){
                 System.out.print("Enter comment: ");
                 String s = br.readLine();

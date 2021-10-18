@@ -27,7 +27,7 @@ public class StudentPortal{
             }else if(job==4){
 
             }else if(job==5){
-
+                currUser.viewCommentSection();
             }else if(job==6){
                 System.out.print("Enter comment: ");
                 String s = br.readLine();
