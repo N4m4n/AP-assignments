@@ -12,5 +12,11 @@ public class Student implements User {
     public void viewMaterials() {
         Data.displayMaterial();        
     }
+
+    @Override
+    public void addComment(String s) {
+        Data.appendComment(this, s);
+        
+    }
     
 }

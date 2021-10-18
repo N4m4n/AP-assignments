@@ -12,8 +12,9 @@ public class StudentPortal{
             return;
         }
         currUser = Data.getStudents().get(stuNo);
-        System.out.println("LOGGED IN AS STUDENT ID : "+currUser.getName());
+        
         while(true){
+            System.out.println("LOGGED IN AS STUDENT ID : "+currUser.getName());
             printStuMenu();
             //TODO: Start working here FOR INSTRUCTOR METHOD
             int job = Integer.parseInt(br.readLine());
@@ -28,7 +29,9 @@ public class StudentPortal{
             }else if(job==5){
 
             }else if(job==6){
-
+                System.out.print("Enter comment: ");
+                String s = br.readLine();
+                currUser.addComment(s);
             }else if(job==7){
                 return;
             }else{

@@ -48,5 +48,9 @@ public class Instructor implements User {
     public void viewMaterials() {
         Data.displayMaterial(this);
         
+    }
+    @Override
+    public void addComment(String s) {
+        Data.appendComment(this, s);
     }    
 }

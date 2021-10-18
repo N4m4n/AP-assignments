@@ -4,7 +4,7 @@ public class Data {
     private static ArrayList<Instructor> allInstructors = new ArrayList<>();
     private static ArrayList<Slides> allSlides = new ArrayList<>();
     private static ArrayList<Video> allVideos = new ArrayList<>();
-    
+    private static ArrayList<Comment> allComments = new ArrayList<>();
     public static void addStudent(Student student) {
         allStudents.add(student);
     }
@@ -30,6 +30,10 @@ public class Data {
     public static ArrayList<Video> getVideos(){
         return allVideos;
     }
+    public static ArrayList<Comment> getComments(){
+        return allComments;
+    }
+
     public static void displayMaterial(){
         System.out.println("------------------------------------------------------");
         System.out.println("Videos:");
@@ -103,4 +107,8 @@ public class Data {
         }
     }
 
+    public static void appendComment(User u1, String s){
+        Comment toAdd = new Comment(u1, s);
+        allComments.add(toAdd);
+    }
 }
