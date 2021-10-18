@@ -21,7 +21,7 @@ public class StudentPortal{
             if(job==1){
                 currUser.viewMaterials();
             }else if(job==2){
-
+                currUser.viewAssessments();
             }else if(job==3){
 
             }else if(job==4){

@@ -25,7 +25,7 @@ public class InstructorPortal {
             }else if(job==3){
                 currUser.viewMaterials();
             }else if(job==4){
-
+                currUser.viewAssessments();
             }else if(job==5){
 
             }else if(job==6){

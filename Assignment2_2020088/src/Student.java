@@ -27,8 +27,8 @@ public class Student implements User {
     }
     @Override
     public void viewAssessments() {
-        // TODO Auto-generated method stub
+        Data.displayAssessments();
         
-    }
+    } 
     
 }
