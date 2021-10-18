@@ -20,9 +20,8 @@ public class InstructorPortal {
             if(job==1){
                 currUser.addCont();
 
-            }else if(job==2){
-            
-
+            }else if(job==2){   
+                currUser.addAssessment();
             }else if(job==3){
                 currUser.viewMaterials();
             }else if(job==4){

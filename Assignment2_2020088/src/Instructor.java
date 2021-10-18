@@ -42,6 +42,33 @@ public class Instructor implements User {
         }
         
     }
+
+    public void addAssessment() throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("1. Add Assignment.");
+        System.out.println("2. Add Quiz.");
+        int aType = Integer.parseInt(br.readLine());
+        if(aType ==1){
+            System.out.print("Enter problem statement: ");
+            String prob = br.readLine();
+            System.out.print("Enter max marks: ");
+            int mm = Integer.parseInt(br.readLine());
+            Assessment currAssess = new Assignment(prob, mm, this);
+            currAssess.appndAssessments();
+            
+        }else if(aType ==2){
+
+            System.out.print("Enter quiz question: ");
+            String ques = br.readLine();
+            Assessment currQuiz = new Assignment(ques, 1, this);
+            currQuiz.appndAssessments();          
+
+        }else{
+            System.out.println("invalid");
+            return;
+        }
+        
+    }
     @Override
     public void viewMaterials() {
         Data.displayMaterial(this);
@@ -59,5 +86,11 @@ public class Instructor implements User {
     @Override
     public String getName(){
         return this.name;
+    }
+
+    @Override
+    public void viewAssessments() {
+        // TODO Auto-generated method stub
+        
     }   
 }

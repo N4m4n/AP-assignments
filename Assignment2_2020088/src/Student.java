@@ -25,5 +25,10 @@ public class Student implements User {
         Data.viewComments(this);
         
     }
+    @Override
+    public void viewAssessments() {
+        // TODO Auto-generated method stub
+        
+    }
     
 }

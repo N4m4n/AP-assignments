@@ -6,6 +6,7 @@ public class Data {
     private static ArrayList<Slides> allSlides = new ArrayList<>();
     private static ArrayList<Video> allVideos = new ArrayList<>();
     private static ArrayList<Comment> allComments = new ArrayList<>();
+    private static ArrayList<Assessment> allAssessments = new ArrayList<>();
     public static void addStudent(Student student) {
         allStudents.add(student);
     }
@@ -17,6 +18,9 @@ public class Data {
     }
     public static void addVideo(Video video) {
         allVideos.add(video);
+    }
+    public static void addAssessment(Assessment assessment) {
+        allAssessments.add(assessment);
     }
 
     public static  ArrayList<Instructor> getInstructors(){
@@ -33,6 +37,9 @@ public class Data {
     }
     public static ArrayList<Comment> getComments(){
         return allComments;
+    }
+    public static ArrayList<Assessment> getAssessments(){
+        return allAssessments;
     }
 
     public static void displayMaterial(){

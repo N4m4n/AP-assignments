@@ -3,4 +3,5 @@ public interface User {
     public void addComment(String s);
     public void viewCommentSection();
     public String getName();
+    public void viewAssessments();
 }
