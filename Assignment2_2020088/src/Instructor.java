@@ -43,5 +43,10 @@ public class Instructor implements User {
             return;
         }
         
+    }
+    @Override
+    public void viewMaterials() {
+        Data.displayMaterial(this);
+        
     }    
 }

@@ -18,7 +18,7 @@ public class StudentPortal{
             //TODO: Start working here FOR INSTRUCTOR METHOD
             int job = Integer.parseInt(br.readLine());
             if(job==1){
-                
+                currUser.viewMaterials();
             }else if(job==2){
 
             }else if(job==3){

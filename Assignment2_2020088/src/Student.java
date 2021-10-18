@@ -7,5 +7,10 @@ public class Student implements User {
     public String getName(){
         return this.name;
     }
+
+    @Override
+    public void viewMaterials() {
+        Data.displayMaterial();        
+    }
     
 }
