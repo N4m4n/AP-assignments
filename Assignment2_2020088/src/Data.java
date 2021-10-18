@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 public class Data {
     private static ArrayList<Student> allStudents = new ArrayList<>();
     private static ArrayList<Instructor> allInstructors = new ArrayList<>();
@@ -110,5 +111,28 @@ public class Data {
     public static void appendComment(User u1, String s){
         Comment toAdd = new Comment(u1, s);
         allComments.add(toAdd);
+    }
+
+
+    public static void viewComments(User u1){
+        System.out.println("--------------------------------------------------------");
+        System.out.println("Comments:");
+        if(allComments.size()==0){
+            System.out.println("No comments till now");
+            
+        }
+        for(int i = 0; i < allComments.size(); i++){
+            Comment temp = allComments.get(i);
+            System.out.println("--------------------------------------------------------");
+            System.out.println(temp.getComment());
+            if(u1.equals(temp)){
+                System.out.println("Commented By: Me on "+ temp.getUploadTime());
+            }else{
+                System.out.println("Commented By: "+temp.getCommenter().getName()+" on "+ temp.getUploadTime());
+            }
+
+
+        }
+        System.out.println("--------------------------------------------------------");
     }
 }

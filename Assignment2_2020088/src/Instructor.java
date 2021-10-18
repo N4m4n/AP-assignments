@@ -4,9 +4,7 @@ public class Instructor implements User {
     public Instructor(String name){
         this.name = name;
     }
-    public String getName(){
-        return this.name;
-    }
+    
     public void addCont() throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("1. Add Lecture Slides.");
@@ -52,5 +50,14 @@ public class Instructor implements User {
     @Override
     public void addComment(String s) {
         Data.appendComment(this, s);
-    }    
+    }
+    @Override
+    public void viewCommentSection() {
+        Data.viewComments(this);
+        
+    } 
+    @Override
+    public String getName(){
+        return this.name;
+    }   
 }

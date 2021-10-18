@@ -4,6 +4,7 @@ public class Student implements User {
         this.name = name;
     }
 
+    @Override
     public String getName(){
         return this.name;
     }
@@ -16,6 +17,12 @@ public class Student implements User {
     @Override
     public void addComment(String s) {
         Data.appendComment(this, s);
+        
+    }
+
+    @Override
+    public void viewCommentSection() {
+        Data.viewComments(this);
         
     }
     
