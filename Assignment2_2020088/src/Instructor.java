@@ -126,7 +126,7 @@ public class Instructor implements User {
     public void manageSubmission(int num) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         this.viewAssessments();
-        System.out.print("Enter the assessment ID");
+        System.out.print("Enter the assessment ID: ");
         int assID = Integer.parseInt(reader.readLine());
         if(assID<0 || assID>=Data.getAssessments().size()) {
             System.out.println("Invalid ID");
@@ -137,16 +137,23 @@ public class Instructor implements User {
         for(int i= 0;i<arr.length;i++) {
             arr[i] = -1;
         }
+        int count = 0;
         for(int i = 0;i<Data.getSubmissions().size();i++) {
             Submission temp = Data.getSubmissions().get(i);
             if(temp.getAssessment().equals(toGrade)){
                 if(Data.getSubmissions().get(i).getMarkedBy()==null){
+                    count++;
                     Student s = temp.getStudent();
                     int idStu = Data.getStudents().indexOf(s);
                     arr[idStu] = i;
                 }
 
             }
+        }
+        
+        if(count==0){
+            System.out.println("No new submission for this assignment yet.");
+            return;
         }
         for(int i = 0; i <arr.length; i++){
             if(arr[i]!=-1){
