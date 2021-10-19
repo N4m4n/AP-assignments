@@ -172,7 +172,7 @@ public class Instructor implements User {
         System.out.println("-----------------------");
         System.out.println("Max marks: "+submissionToGrade.getAssessment().getMaxMarks());
         System.out.print("Marks obtained: ");
-        int marksScored = Integer.parseInt(reader.readLine());
+        double marksScored = Double.parseDouble(reader.readLine());
         if(marksScored>submissionToGrade.getAssessment().getMaxMarks()){
             System.out.println("Entered marks are greater than max marks Do you wish to cancel?\n1 Yes\n2 No");
             int c = Integer.parseInt(reader.readLine());

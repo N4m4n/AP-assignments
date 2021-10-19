@@ -3,7 +3,7 @@ public class Submission {
     private String ans;
     private Assessment assessment;
     private Instructor markedBy;
-    private int marksObtained;
+    private double marksObtained;
     public Submission(Student st, String ans, Assessment asmnt){
         this.student = st;
         this.ans = ans;
@@ -23,10 +23,10 @@ public class Submission {
     public Instructor getMarkedBy(){
         return this.markedBy;
     }
-    public int getMarksObtained(){
+    public double getMarksObtained(){
         return this.marksObtained;
     }
-    public void setMarks(int marksObtained){
+    public void setMarks(double marksObtained){
         this.marksObtained = marksObtained;
     }
     public void setProf(Instructor i){
