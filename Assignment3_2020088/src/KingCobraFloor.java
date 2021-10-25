@@ -6,7 +6,7 @@ public class KingCobraFloor extends SnakeFloor {
     @Override
     public void updatePlayer(Player a){
         System.out.println("Player position Floor-"+a.getPosition());
-        a.addPoints(-4);
+        a.addPoints(getPointsPossible());
         System.out.println(a.getName()+" has reached the King Cobra floor");
         System.out.println("Total points = "+ a.getPoints());
         Floor newPos = GameManager.getAllFloors().get(3);
