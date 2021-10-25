@@ -1,4 +1,7 @@
 public class ElevatorFloor extends LadderFloor {
+    ElevatorFloor(int p){
+        super(p);
+    }
     @Override
     public void updatePlayer(Player a){
         System.out.println("Player position Floor-"+a.getPosition());

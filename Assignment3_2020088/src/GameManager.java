@@ -10,20 +10,20 @@ public class GameManager {
         String playerName = br.readLine();
         GameManager.mainPlayer = new Player(playerName);
         GameManager.mainDice = new Dice(2);
-        allFloors.add(new EmptyFloor());
-        allFloors.add(new EmptyFloor());
-        allFloors.add(new ElevatorFloor());
-        allFloors.add(new EmptyFloor());
-        allFloors.add(new EmptyFloor());
-        allFloors.add(new SnakeFloor());
-        allFloors.add(new EmptyFloor());
-        allFloors.add(new EmptyFloor());
-        allFloors.add(new LadderFloor());
-        allFloors.add(new EmptyFloor());
-        allFloors.add(new EmptyFloor());
-        allFloors.add(new KingCobraFloor());
-        allFloors.add(new EmptyFloor());
-        allFloors.add(new EmptyFloor());
+        allFloors.add(new EmptyFloor(0));
+        allFloors.add(new EmptyFloor(1));
+        allFloors.add(new ElevatorFloor(2));
+        allFloors.add(new EmptyFloor(3));
+        allFloors.add(new EmptyFloor(4));
+        allFloors.add(new SnakeFloor(5));
+        allFloors.add(new EmptyFloor(6));
+        allFloors.add(new EmptyFloor(7));
+        allFloors.add(new LadderFloor(8));
+        allFloors.add(new EmptyFloor(9));
+        allFloors.add(new EmptyFloor(10));
+        allFloors.add(new KingCobraFloor(11));
+        allFloors.add(new EmptyFloor(12));
+        allFloors.add(new EmptyFloor(13));
       
     }
 
