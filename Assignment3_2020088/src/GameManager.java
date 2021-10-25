@@ -5,6 +5,7 @@ public class GameManager {
     private static Player mainPlayer;
     private static Dice mainDice;
     public static void init() throws IOException {
+        System.out.print("Enter the player's name and hit enter: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String playerName = br.readLine();
         GameManager.mainPlayer = new Player(playerName);
@@ -25,6 +26,8 @@ public class GameManager {
         allFloors.add(new EmptyFloor());
       
     }
+
+
     public static void startGame() throws IOException {
         System.out.println("The game setup is ready.");
         while(mainPlayer.getPosition()<13){
@@ -34,6 +37,10 @@ public class GameManager {
             reader.readLine();
             System.out.print("Dice gave ");
             System.out.println(mainDice.roll());
+            if(mainPlayer.getPosition()==12 && mainDice.getCurrTop()==2){
+                System.out.println("Player cannot move.");
+                continue;
+            }
             if(mainPlayer.ifStarted()){
                 
                 mainPlayer.setPosition(mainPlayer.getPosition()+mainDice.getCurrTop());
@@ -53,7 +60,7 @@ public class GameManager {
                 }
             }
         }
-
+        System.out.println("Game Over!");
         System.out.println(mainPlayer.getName() + " accumulated "+mainPlayer.getPoints()+" points.");
     }
 

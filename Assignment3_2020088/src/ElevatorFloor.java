@@ -6,6 +6,7 @@ public class ElevatorFloor extends LadderFloor {
         System.out.println("Total points = "+ a.getPoints());
         Floor newPos = GameManager.getAllFloors().get(10);
         a.setPosition(10);
+        System.out.println();
         newPos.updatePlayer(a);
     }
 }

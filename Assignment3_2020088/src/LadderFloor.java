@@ -6,6 +6,7 @@ public class LadderFloor extends Floor {
         System.out.println("Total points = "+ a.getPoints());
         Floor newPos = GameManager.getAllFloors().get(12);
         a.setPosition(12);
+        System.out.println();
         newPos.updatePlayer(a);
     }
     

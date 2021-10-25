@@ -6,6 +6,7 @@ public class KingCobraFloor extends SnakeFloor {
         System.out.println("Total points = "+ a.getPoints());
         Floor newPos = GameManager.getAllFloors().get(3);
         a.setPosition(3);
+        System.out.println();
         newPos.updatePlayer(a);
     }
     

@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Dice {
     private final int numFaces;
     private int faceVal;
