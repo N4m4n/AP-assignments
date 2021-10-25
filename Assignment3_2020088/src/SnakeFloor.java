@@ -1,6 +1,7 @@
 public class SnakeFloor extends Floor{
     SnakeFloor(int p){
         super(p);
+        this.pointsGained = -2;
     }
     @Override
     public void updatePlayer(Player a){

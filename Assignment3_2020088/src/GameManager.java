@@ -33,6 +33,7 @@ public class GameManager {
         while(mainPlayer.getPosition()<13){
             
             System.out.println("Hit enter to roll the dice");
+            System.out.println("----------------------------------------------------");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             reader.readLine();
             System.out.print("Dice gave ");

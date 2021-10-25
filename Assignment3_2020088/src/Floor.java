@@ -1,7 +1,9 @@
 public class Floor {
     protected int position;
+    protected int pointsGained;
     Floor(int pos){
         this.position = pos;
+        this.pointsGained = 0;
     }    
     
     public void updatePlayer(Player a){

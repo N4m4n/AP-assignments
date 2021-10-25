@@ -1,6 +1,7 @@
 public class EmptyFloor extends Floor {
     EmptyFloor(int p){
         super(p);
+        this.pointsGained = 1;
     }
     @Override
     public void updatePlayer(Player a){

@@ -1,6 +1,7 @@
 public class KingCobraFloor extends SnakeFloor {
     KingCobraFloor(int p){
         super(p);
+        this.pointsGained = -4;
     }
     @Override
     public void updatePlayer(Player a){

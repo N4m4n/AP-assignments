@@ -1,6 +1,7 @@
 public class LadderFloor extends Floor {
     LadderFloor(int p){
         super(p);
+        this.pointsGained = 2;
     }
 
 
