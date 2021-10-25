@@ -1,14 +1,8 @@
 public class EmptyFloor extends Floor {
-    private int pointsObt;
-    EmptyFloor(){
-        pointsObt = 1;
-    }
-    public int getPointsScored(){
-        return this.pointsObt;
-    }
-    public void applyChanges(Player p){
-        p.addPoints(1);
-        //Dice has to be used here
-        p.changePos(p.getPosition()+1);
+    public void updatePlayer(Player a){
+        System.out.println("Player position Floor-"+a.getPosition());
+        a.addPoints(1);
+        System.out.println(a.getName()+" has reached an empty floor");
+        System.out.println("Total points = "+ a.getPoints());
     }
 }

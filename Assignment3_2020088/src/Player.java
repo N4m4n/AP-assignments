@@ -5,7 +5,7 @@ public class Player {
     private boolean started;
     Player(String name){
         this.name = name;
-        this.currPosition = 0;
+        this.currPosition = -1;
         this.points = 0;
         this.started = false;
     }
@@ -30,6 +30,12 @@ public class Player {
     public boolean ifStarted(){
         return this.started;
     }
-
+    public void setIfStarted(boolean a){
+        this.started = a;
+    }
+    public void setPosition(int i) {
+        this.currPosition = i;
+    }
+    
 
 }

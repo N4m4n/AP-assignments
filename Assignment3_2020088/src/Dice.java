@@ -8,7 +8,7 @@ public class Dice {
     }
 
     public int roll(){
-        int curr = (int)(Math.random()*(2-1+1)+1);
+        int curr = (int)(Math.random()*(this.numFaces-1+1)+1);
         this.faceVal = curr;
         return this.faceVal;
 
