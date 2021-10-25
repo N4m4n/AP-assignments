@@ -1,4 +1,4 @@
-public class Floor {
+public abstract class Floor {
     protected int position;
     protected int pointsGained;
     Floor(int pos){
@@ -6,12 +6,7 @@ public class Floor {
         this.pointsGained = 0;
     }    
     
-    public void updatePlayer(Player a){
-        System.out.println("Player position Floor-"+a.getPosition());
-        a.addPoints(getPointsPossible());
-        System.out.println(a.getName()+" has reached a floor");
-        System.out.println("Total points = "+ a.getPoints());
-    }
+    public abstract void updatePlayer(Player a);
 
     public int getPointsPossible(){
         return this.pointsGained;
