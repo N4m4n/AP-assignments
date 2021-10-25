@@ -1,4 +1,5 @@
 public class KingCobraFloor extends SnakeFloor {
+    @Override
     public void updatePlayer(Player a){
         System.out.println("Player position Floor-"+a.getPosition());
         a.addPoints(-4);
