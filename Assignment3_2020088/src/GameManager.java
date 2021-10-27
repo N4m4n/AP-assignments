@@ -5,6 +5,7 @@ public class GameManager {
     private static Player mainPlayer;
     private static Dice mainDice;
     private static int highscore;
+    private static String highScorer;
     public static void init() throws IOException {
         System.out.print("Enter the player's name and hit enter: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -70,7 +71,11 @@ public class GameManager {
         if(getHighScore()<mainPlayer.getPoints()){
             System.out.println("Congratulations! You have set a new high score!");
             setHighScore(mainPlayer.getPoints());
+            setHighScorer(mainPlayer.getName());
         }
+        System.out.println("Current Highest Score = "+getHighScore()+" scored by "+getHighScorer());
+            
+        
         System.out.println("Do you wish to restart?\n1. Yes\n2. No");
         String restrt = reader.readLine();
         if(restrt.equals("1")){
@@ -106,5 +111,11 @@ public class GameManager {
     }
     public static int getHighScore(){
         return highscore;
+    }
+    public static String getHighScorer(){
+        return highScorer;
+    }
+    public static void setHighScorer(String s){
+        highScorer = s;
     }
 }
