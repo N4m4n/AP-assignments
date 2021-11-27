@@ -21,9 +21,6 @@ public class Player {
         bucket.add(toAdd);
     }
 
-    public int getJump() {
-        return (int) Math.random()*(26 - 0 + 1) + 0;
-    }
     public void decrementChances(){
         this.noOfChances--;
     }

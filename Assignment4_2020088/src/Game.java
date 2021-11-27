@@ -20,7 +20,7 @@ public class Game {
             br.readLine();
             mainPlayer.decrementChances();
             try{
-                int jump = getRandomInt(0, 26);
+                int jump = getRandomInt(0, 28);
                 if(jump>=20){
                     throw new EnergeticException("Muddy Puddle Splash!");
                 }else if(jump%2==0){
@@ -32,10 +32,14 @@ public class Game {
                 }
 
             }catch(EnergeticException e){
-                System.out.println("You are too energetic and zoomed past all tiles.");
+                System.out.println(e.getMessage()+": You are too energetic and zoomed past all tiles.");
             }
 
             
+        }
+        System.out.println("The toys you won are: ");
+        for(int i=0; i< mainPlayer.getbucket().size();i++){
+            System.out.print(mainPlayer.getbucket().get(i).getName()+", ");
         }
         
     }
@@ -92,8 +96,8 @@ public class Game {
                         char[] arr1 = new char[4];
                         char[] arr2 = new char[4];
                         for(int i = 0; i < 4; i++){
-                            arr1[i] = (char)getRandomInt(41, 91);
-                            arr2[i] = (char)getRandomInt(41, 91);
+                            arr1[i] = (char)getRandomInt(65, 91);
+                            arr2[i] = (char)getRandomInt(65, 91);
                         }
                         String partA = String.valueOf(arr1);
                         String partB = String.valueOf(arr2);
@@ -110,6 +114,8 @@ public class Game {
                             Toy toClone = Game.getToyAt(j);
                             Toy toAdd = toClone.clone();
                             mainPlayer.addToy(toAdd);
+                        }else{
+                            System.out.println("You did not win the toy");
                         }
                     }
                 }else{
@@ -139,14 +145,14 @@ public class Game {
         tileCarpet.add(new Toy("Daffy", true));
         tileCarpet.add(new Toy("Buzz Lightyear"));
         tileCarpet.add(new Toy("Woody", true));
-        tileCarpet.add(new Toy("Xbox"));
+        tileCarpet.add(new Toy("Shrek"));
         tileCarpet.add(new Toy("Tiger", true));
-        tileCarpet.add(new Toy("PS5"));
-        tileCarpet.add(new Toy("", true));
-        tileCarpet.add(new Toy(""));
-        tileCarpet.add(new Toy("", true));
-        tileCarpet.add(new Toy(""));
-        tileCarpet.add(new Toy("", true));
+        tileCarpet.add(new Toy("Bob the builder"));
+        tileCarpet.add(new Toy("Oswald", true));
+        tileCarpet.add(new Toy("Shinchan"));
+        tileCarpet.add(new Toy("Doraemon", true));
+        tileCarpet.add(new Toy("Nobita"));
+        tileCarpet.add(new Toy("Gian", true));
         tileCarpet.add(new Toy("Piggu Penguin"));
         tileCarpet.add(new Toy("Bob", true));
         tileCarpet.add(new Toy("Minion"));
