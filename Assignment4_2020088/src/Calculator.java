@@ -16,7 +16,7 @@ public class Calculator <T> {
             try{
                 Integer frst = (Integer) a;
                 Integer secnd = (Integer) b;
-                Integer res = frst+secnd;
+                Integer res = frst/secnd;
                 T toRet = (T) res;
                 return toRet;
             }catch(ClassCastException cce){
