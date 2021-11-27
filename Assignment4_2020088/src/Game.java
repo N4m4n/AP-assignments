@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.io.*;
-import java.nio.Buffer;
 
 public class Game {
     private static ArrayList<Toy> tileCarpet = new ArrayList<Toy>();
@@ -26,10 +25,10 @@ public class Game {
                     throw new EnergeticException("Muddy Puddle Splash!");
                 }else if(jump%2==0){
                     System.out.println("You landed on tile "+(jump+1));
-                    oddTile();
+                    oddTile(jump);
                 }else if(jump%2==1){
                     System.out.println("You landed on tile "+(jump+1));
-
+                    evenTile(jump);
                 }
 
             }catch(EnergeticException e){
@@ -41,7 +40,14 @@ public class Game {
         
     }
 
-    public static void oddTile(){
+
+    public static void evenTile(int j){
+        Toy toClone = Game.getToyAt(j);
+        Toy toAdd = toClone.clone();
+        mainPlayer.addToy(toAdd);
+    }
+
+    public static void oddTile(int j){
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Question Answer round. Integer or Strings?");
         boolean inputTaken = false;
@@ -52,14 +58,15 @@ public class Game {
                     if(inp.equals("integer")){
                         int a = getRandomInt(2, 1000000);
                         int b = getRandomInt(2, 1000000);
-                        int actualAns;
-                        if(a>b){
-                            System.out.println("Calculate the result of "+a+" divided by "+b);
+                        int actualAns= 0;
+                        
+                        System.out.println("Calculate the result of "+a+" divided by "+b);
+                        try{
                             actualAns = intCalc.solve(a, b);
-                        }else{
-                            System.out.println("Calculate the result of "+b+" divided by "+a);
-                            actualAns = intCalc.solve(b, a);
+                        }catch(IllegalArgumentException iae){
+                            System.out.println(iae.getMessage());
                         }
+
                         int userAns = 0;
                         boolean ansGiven = false;
                         while(!ansGiven){
@@ -73,7 +80,9 @@ public class Game {
                             }
                         }
                         if(actualAns == userAns){
-                            //clone the toy and add
+                            Toy toClone = Game.getToyAt(j);
+                            Toy toAdd = toClone.clone();
+                            mainPlayer.addToy(toAdd);
                         }else{
                             System.out.println("You did not win any toy.");
                         }
@@ -125,7 +134,7 @@ public class Game {
         
 
     }
-    public Toy getToyAt(int i){
+    public static Toy getToyAt(int i){
         return tileCarpet.get(i);
     }
 }

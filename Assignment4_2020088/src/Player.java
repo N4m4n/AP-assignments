@@ -17,6 +17,7 @@ public class Player {
     }
 
     public void addToy(Toy toAdd){
+        System.out.println("You just won a "+toAdd.getName()+" soft toy.");
         bucket.add(toAdd);
     }
 
