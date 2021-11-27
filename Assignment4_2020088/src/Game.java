@@ -56,8 +56,8 @@ public class Game {
                 String inp = br.readLine();
                 if((inp.equals("integer"))||(inp.equals("string"))){
                     if(inp.equals("integer")){
-                        int a = getRandomInt(2, 1000000);
-                        int b = getRandomInt(2, 1000000);
+                        int a = getRandomInt(Integer.MIN_VALUE, Integer.MAX_VALUE);
+                        int b = getRandomInt(Integer.MIN_VALUE, Integer.MAX_VALUE);
                         int actualAns= 0;
                         
                         System.out.println("Calculate the result of "+a+" divided by "+b);
@@ -89,8 +89,28 @@ public class Game {
 
                        
                     }else{
-                        //Need to start here
-                        System.out.println("Didnt write code");
+                        char[] arr1 = new char[4];
+                        char[] arr2 = new char[4];
+                        for(int i = 0; i < 4; i++){
+                            arr1[i] = (char)getRandomInt(41, 91);
+                            arr2[i] = (char)getRandomInt(41, 91);
+                        }
+                        String partA = String.valueOf(arr1);
+                        String partB = String.valueOf(arr2);
+
+                        String actual = "";
+                        try{
+                            actual = strCalc.solve(partA, partB);
+                        }catch(IllegalArgumentException iae){
+                            System.out.println(iae.getMessage());
+                        }
+                        System.out.println("Calculate the concatenation of strings "+partA + " and "+partB);
+                        String user = br.readLine();
+                        if(user.equals(actual)){
+                            Toy toClone = Game.getToyAt(j);
+                            Toy toAdd = toClone.clone();
+                            mainPlayer.addToy(toAdd);
+                        }
                     }
                 }else{
                     throw new InvalidOptionEnteredException("Invalid question type selected");
