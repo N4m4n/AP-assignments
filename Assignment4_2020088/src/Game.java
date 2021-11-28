@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.io.*;
 
 public class Game {
@@ -7,8 +8,10 @@ public class Game {
     private static Calculator<String> strCalc = new Calculator<String>();
     private static Calculator<Integer> intCalc = new Calculator<Integer>();
 
-    public static int getRandomInt(int min, int max){
-        return (int) (Math.random()*(max - min + 1) + min);
+    public static int getRandomInt(int min, int max, int shift){
+        Random random = new Random();
+        int toRet = random.nextInt((max - min) + 1)+shift;     
+        return toRet;
     }
 
     public static void start() throws IOException {
@@ -20,7 +23,7 @@ public class Game {
             br.readLine();
             mainPlayer.decrementChances();
             try{
-                int jump = getRandomInt(0, 28);
+                int jump = getRandomInt(0, 28, 0);
                 if(jump>=20){
                     throw new EnergeticException("Muddy Puddle Splash!");
                 }else if(jump%2==0){
@@ -60,8 +63,8 @@ public class Game {
                 String inp = br.readLine();
                 if((inp.equals("integer"))||(inp.equals("string"))){
                     if(inp.equals("integer")){
-                        int a = getRandomInt(Integer.MIN_VALUE, Integer.MAX_VALUE);
-                        int b = getRandomInt(Integer.MIN_VALUE, Integer.MAX_VALUE);
+                        int a = getRandomInt(0, 1000000,-50000);
+                        int b = getRandomInt(0, 1000000,-50000);
                         int actualAns= 0;
                         
                         System.out.println("Calculate the result of "+a+" divided by "+b);
@@ -96,8 +99,8 @@ public class Game {
                         char[] arr1 = new char[4];
                         char[] arr2 = new char[4];
                         for(int i = 0; i < 4; i++){
-                            arr1[i] = (char)getRandomInt(65, 91);
-                            arr2[i] = (char)getRandomInt(65, 91);
+                            arr1[i] = (char)getRandomInt(0, 25, 65);
+                            arr2[i] = (char)getRandomInt(0, 25, 65);
                         }
                         String partA = String.valueOf(arr1);
                         String partB = String.valueOf(arr2);

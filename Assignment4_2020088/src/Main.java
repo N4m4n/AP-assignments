@@ -6,5 +6,10 @@ public class Main {
         reader.readLine();
         Game.init();
         Game.start();
+        
+        // Testing random numbers
+        // System.out.println(Game.getRandomInt(0, 25, 65));
+        // System.out.println(Game.getRandomInt(0, 28, 0));
+        // System.out.println(Game.getRandomInt(0, 1000000,-50000));
     }
 }
